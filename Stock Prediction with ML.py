@@ -17,7 +17,7 @@ register_matplotlib_converters()
 
 # static variables
 stock_symbol = 'HOU.TO'
-start_date = '2020-05-04'
+start_date = '2020-05-01'
 spec_num = 10
 
 # Import Libraries
@@ -26,7 +26,7 @@ plt.style.use('fivethirtyeight')
 # Get the stock quotes
 df = web.DataReader(stock_symbol, data_source='yahoo', start=start_date,
                     end=datetime.today().strftime('%Y-%m-%d'))
-
+# datetime.today().strftime('%Y-%m-%d')
 # Print the stock data
 # print(df)
 
