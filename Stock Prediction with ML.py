@@ -1,6 +1,8 @@
 # Stock Prediction
+# Version: 1.0
 # Tissan Kugathas
-# May 7 2020
+# Start Date: May 7 2020
+# End Date: April 5 2020
 
 # Python Libraries
 import matplotlib.pyplot as plt
@@ -16,8 +18,8 @@ import math
 register_matplotlib_converters()
 
 # static variables
-stock_symbol = 'HOU.TO'
-start_date = '2020-05-01'
+stock_symbol = 'SCL.TO'
+start_date = '2019-04-01'
 spec_num = 10
 
 # Import Libraries
@@ -132,7 +134,7 @@ plt.ylabel('Close Price USD ($)', fontsize=18)
 plt.plot(train['Close'])
 plt.plot(valid[['Close', 'Predictions']])
 plt.legend(['Train', 'Val', 'Predictions'], loc="lower right")
-# print(plt.show())
+print(plt.show())
 
 # Show the valid and predicted prices
 print(valid)
