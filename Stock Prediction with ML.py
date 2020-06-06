@@ -17,7 +17,8 @@ register_matplotlib_converters()
 
 # static variables
 stock_symbol = 'HOU.TO'
-start_date = '2008-01-15'
+start_date = '2020-05-04'
+spec_num = 10
 
 # Import Libraries
 plt.style.use('fivethirtyeight')
@@ -64,14 +65,14 @@ train_data = scaled_data[0:training_data_len, :]
 x_train = []
 y_train = []
 
-for i in range(60, len(train_data)):
-    x_train.append(train_data[i-60:i, 0])
+for i in range(spec_num, len(train_data)):
+    x_train.append(train_data[i-spec_num:i, 0])
     y_train.append(train_data[i, 0])
-    if i <= 60:
+    if i <= spec_num:
         print(x_train)
         print(y_train)
         print()
-    elif not len(train_data) >= 60:
+    elif not len(train_data) >= spec_num:
         print('Not enough data')
         print()
 
@@ -98,12 +99,12 @@ model.fit(x_train, y_train, batch_size=1, epochs=1)
 
 # Create the testing dataset
 # Create a new array containing scaled values
-test_data = scaled_data[training_data_len-60:, :]
+test_data = scaled_data[training_data_len-spec_num:, :]
 # Create the datasets x_test and y_test
 x_test = []
 y_test = dataset[training_data_len:, :]
-for i in range(60, len(test_data)):
-    x_test.append(test_data[i-60:i, 0])
+for i in range(spec_num, len(test_data)):
+    x_test.append(test_data[i-spec_num:i, 0])
 
 # Convert the daata to a numpy array
 x_test = np.array(x_test)
@@ -128,6 +129,10 @@ plt.figure(figsize=(16, 8))
 plt.title('Model')
 plt.xlabel('Date', fontsize=18)
 plt.ylabel('Close Price USD ($)', fontsize=18)
+plt.plot(train['Close'])
 plt.plot(valid[['Close', 'Predictions']])
 plt.legend(['Train', 'Val', 'Predictions'], loc="lower right")
-print(plt.show())
+# print(plt.show())
+
+# Show the valid and predicted prices
+print(valid)
