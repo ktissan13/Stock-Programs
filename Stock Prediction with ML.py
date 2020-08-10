@@ -18,7 +18,7 @@ import math
 register_matplotlib_converters()
 
 # static variables
-stock_symbol = 'SCL.TO'
+stock_symbol = 'CLV20.NYM'
 start_date = '2019-04-01'
 spec_num = 10
 
